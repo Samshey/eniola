@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Happy Birthday, [DEAR MISS ENIOLA]!</h1>
+            <p>Wishing you a day filled with love, joy, and laughter!</p>
+        </header>
+
+        <main>
+            <div id="birthday-message">
+                <h2>🎉 Hope you have an amazing year ahead! 🎉</h2>
+            </div>
+
+            <button id="surpriseButton" onclick="showMessage()">Click for a Surprise 🎁</button>
+
+            <div id="surpriseMessage" class="hidden">
+                <h2>Surprise!!! 🎈 You are awesome!</h2>
+            </div>
+        </main>
+
+        <footer>
+            <p>&#169; 2024 Your Birthday Website. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+    /* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffcccb; /* Light pink background */
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #ff6347; /* Tomato red */
+    color: white;
+    padding: 40px 0;
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #ff6347; /* Tomato red */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e55347;
+}
+
+#birthday-message h2 {
+    font-size: 24px;
+    color: #2e8b57; /* Dark green */
+    margin-top: 20px;
+}
+
+#surpriseMessage {
+    font-size: 28px;
+    color: #ff1493; /* Deep pink */
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    margin-top: 50px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Confetti animation */
+@keyframes confetti {
+    0% {
+        transform: rotate(0deg) translateY(0);
+    }
+    100% {
+        transform: rotate(360deg) translateY(600px);
+    }
+}
+
+.confetti {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: #ff1493;
+    opacity: 0.8;
+    animation: confetti 2s infinite ease-in-out;
+}
+
+    </style>
+    <script>
+        // Surprise message toggle
+function showMessage() {
+    const surpriseMessage = document.getElementById("surpriseMessage");
+    surpriseMessage.classList.toggle("hidden");
+}
+
+// Function to create confetti effect
+function createConfetti() {
+    const body = document.querySelector('body');
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        confetti.style.animationDelay = `${Math.random() * 2}s`;
+        body.appendChild(confetti);
+
+        // Remove confetti after animation is complete
+        setTimeout(() => {
+            confetti.remove();
+        }, 5000);
+    }
+}
+
+// Trigger confetti when the page loads
+window.onload = function() {
+    createConfetti();
+};
+</script>
